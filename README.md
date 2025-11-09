@@ -96,8 +96,8 @@ docker run --rm -p 8000:8000 --env-file .env prompt-safety-engine
 
 ---
 
-### 🔥 API Endpoints & Examples
-#### ✅ POST `/mitigate`
+### API Endpoints & Examples
+#### POST `/mitigate`
 Evaluates the prompt based on policy.
 
 Request body:
@@ -155,7 +155,7 @@ Response:
 }
 ```
 
-#### ✅ GET `/history`
+#### GET `/history`
 Returns recent interactions.
 
 Example Response:
@@ -176,7 +176,7 @@ Example Response:
 ]
 ```
 
-#### ✅ POST `/reload_policy`
+#### POST `/reload_policy`
 Reloads the policy file from disk.
 
 Response:
@@ -185,6 +185,16 @@ Response:
   "status": "policy reloaded"
 }
 ```
+
+### Optional Postman Collection
+
+A Postman collection is included for convenience of testing:
+```
+postman/prompt-safety-engine.postman_collection.json
+```
+Import it into Postman and click “Run” to test all endpoints quickly.
+For example:
+<img width="836" height="437" alt="image" src="https://github.com/user-attachments/assets/084819be-b355-4a82-a9e8-d1b36405f7ea" />
 
 ---
 
