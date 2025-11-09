@@ -10,12 +10,7 @@ The service is designed to mimic a real-world AI safety/guardrail layer with con
 - **Config-driven policy loading (JSON)**
 - **Deterministic evaluation logic**
 - **Redaction of common PII**
-  - Emails → `\u003cEMAIL\u003e`
-  - Phone numbers → `\u003cPHONE\u003e`
-  - Secrets like `SECRET{...}` → `\u003cSECRET\u003e`
 - **Blocking rules**
-  - Banned keywords
-  - Prompt length limit
 - **Request history endpoint**
 - **Hot policy reload** (`/reload_policy`)
 - **Dockerized for consistent offline runtime**
@@ -51,7 +46,7 @@ prompt-safety-engine/
 The service loads its policy file from an environment variable:
 
 ```bash
-POLICY_FILE_PATH=/app/policies/policy.json
+POLICY_FILE_PATH=/app/policies/policy.example.json
 ```
 
 A default configuration is provided via `policy.example.json`.  
