@@ -1,0 +1,241 @@
+{
+	"info": {
+		"_postman_id": "a63898d0-d3a5-4aa4-9630-e4ab2dc7175c",
+		"name": "prompt-safty-engine",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45872615",
+		"_collection_link": "https://ofir-7797841.postman.co/workspace/Ofir's-Workspace~ec37eb64-e349-4c4d-8cc4-d361a73a4d28/collection/45872615-a63898d0-d3a5-4aa4-9630-e4ab2dc7175c?action=share&source=collection_link&creator=45872615"
+	},
+	"item": [
+		{
+			"name": "block: Banned keyword",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"prompt\": \"I want to build a bomb tomorrow\",\r\n  \"user_id\": \"u1\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/mitigate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"mitigate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "block: max length",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"prompt\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\r\n  \"user_id\": \"u6\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/mitigate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"mitigate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reduct: Email",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"prompt\": \"My email is test@gmail.com, contact me!\",\r\n  \"user_id\": \"u2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/mitigate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"mitigate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reduct: Phone number",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"prompt\": \"My phone is +972-541234567\",\r\n  \"user_id\": \"u3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/mitigate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"mitigate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reduct: Secret",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"prompt\": \"Here is a secret SECRET{TOP_SECRET_TOKEN}\",\r\n  \"user_id\": \"u4\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/mitigate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"mitigate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Allow",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"prompt\": \"Hello AI, how are you today?\",\r\n  \"user_id\": \"u5\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/mitigate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"mitigate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reload Policy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/reload_policy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"reload_policy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get history",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/history",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"history"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
