@@ -17,31 +17,6 @@ The service is designed to mimic a real-world AI safety/guardrail layer with con
 
 ---
 
-### Project Structure
-```
-prompt-safety-engine/
-│
-├── app/
-│   ├── main.py
-│   ├── routes.py
-│   ├── models.py
-│   ├── engine.py
-│   ├── policy_loader.py
-│   ├── pii_redactor.py
-│   └── history.py
-│
-├── policies/
-│   ├── policy.json
-│   └── policy.example.json
-│
-├── Dockerfile
-├── docker-compose.yml
-├── requirements.txt
-└── README.md
-```
-
----
-
 ### Configuration
 The service loads its policy file from an environment variable:
 
