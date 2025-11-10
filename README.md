@@ -9,11 +9,12 @@ The service is designed to mimic a real-world AI safety/guardrail layer with con
 ### Features
 - **Config-driven policy loading (JSON)**
 - **Deterministic evaluation logic**
-- **Redaction of common PII**
+- **Extensible redaction system using pluggable Redactor classes of common PII**
 - **Blocking rules**
 - **Request history endpoint**
 - **Hot policy reload** (`/reload_policy`)
 - **Dockerized for consistent offline runtime**
+- **Modular design — adding new redactors requires no changes to the engine**
 
 ---
 
@@ -41,7 +42,8 @@ You may copy it or override it using environment variables.
   "redaction_rules": {
     "email": true,
     "phone": true,
-    "secret": true
+    "secret": true,
+    "credit_card": true
   },
   "history_limit": 20
 }
@@ -75,6 +77,7 @@ docker run --rm -p 8000:8000 --env-file .env prompt-safety-engine
 #### POST `/mitigate`
 Evaluates the prompt based on policy.
 
+Reduct Example
 Request body:
 ```json
 {
@@ -88,6 +91,22 @@ Response:
 {
   "action": "redact",
   "prompt_out": "My email is \u003cEMAIL\u003e",
+  "reason": "PII redacted according to policy"
+}
+```
+Reduct for credit card number example:
+```json
+{
+  "prompt": "My card number is 4111-1111-1111-1111",
+  "user_id": "u_bonus_1"
+}
+```
+
+Response:
+```json
+{
+  "action": "redact",
+  "prompt_out": "My card number is <CARD>",
   "reason": "PII redacted according to policy"
 }
 ```

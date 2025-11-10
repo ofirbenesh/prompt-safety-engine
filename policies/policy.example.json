@@ -9,7 +9,8 @@
   "redaction_rules": {
     "email": true,
     "phone": true,
-    "secret": true
+    "secret": true,
+    "credit_card": true
   },
   "history_limit": 20
 }
