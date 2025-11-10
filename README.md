@@ -90,7 +90,7 @@ Response:
 ```json
 {
   "action": "redact",
-  "prompt_out": "My email is \u003cEMAIL\u003e",
+  "prompt_out": "My email is <EMAIL>",
   "reason": "PII redacted according to policy"
 }
 ```
