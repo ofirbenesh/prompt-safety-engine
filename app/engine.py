@@ -1,5 +1,5 @@
 from app.policy_loader import get_policy
-from app.pii_redactor import redact_pii
+from app.redactors.registry import get_all_redactors
 
 
 def evaluate_prompt(request):
@@ -26,14 +26,20 @@ def evaluate_prompt(request):
             }
         
     # Redact
-    redaction_enabled = policy.get("redaction_rules", {})
-    redacted_text = redact_pii(prompt, redaction_enabled)
+    text = prompt
+    changed = False
 
-    if redacted_text != prompt:
-        # something was changed
+    for redactor in get_all_redactors():
+        if redactor.enabled(policy):
+            new_text = redactor.redact(text)
+            if new_text != text:
+                changed = True
+            text = new_text
+
+    if changed:
         return {
             "action": "redact",
-            "prompt_out": redacted_text,
+            "prompt_out": text,
             "reason": "PII redacted according to policy"
         }
 
