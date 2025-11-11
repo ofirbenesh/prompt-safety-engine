@@ -14,7 +14,7 @@ The service is designed to mimic a real-world AI safety/guardrail layer with con
 - **Request history endpoint**
 - **Hot policy reload** (`/reload_policy`)
 - **Dockerized for consistent offline runtime**
-- **Modular design — adding new redactors requires no changes to the engine**
+- **Modular design - adding new redactors requires no changes to the engine**
 
 ---
 
